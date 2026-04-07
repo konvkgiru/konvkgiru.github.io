@@ -1,1 +1,373 @@
-<a href=omt.exe>One More Turn</a>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>One More Turn | Скачать игру</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Poppins', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Анимированный фон */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 50%, rgba(88, 28, 135, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+            animation: floatBackground 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes floatBackground {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-2%, -2%) rotate(1deg); }
+        }
+
+        /* Частицы */
+        .particle {
+            position: absolute;
+            background: rgba(139, 92, 246, 0.4);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-20vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Главный контейнер */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 40px 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                        0 0 0 1px rgba(139, 92, 246, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        /* Иконка игры */
+        .game-icon {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .game-icon svg {
+            width: 100px;
+            height: 100px;
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.6));
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.6)); }
+            50% { filter: drop-shadow(0 0 30px rgba(139, 92, 246, 1)); }
+        }
+
+        /* Заголовок */
+        h1 {
+            text-align: center;
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #c084fc, #60a5fa, #f472b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 10px;
+        }
+
+        /* Описание */
+        .description {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 24px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 4px solid #8b5cf6;
+        }
+
+        .description p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .feature {
+            background: rgba(139, 92, 246, 0.2);
+            border-radius: 50px;
+            padding: 6px 16px;
+            font-size: 0.85rem;
+            color: #c084fc;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .feature svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Кнопка скачивания */
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border: none;
+            width: 100%;
+            padding: 20px;
+            border-radius: 60px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px -5px rgba(139, 92, 246, 0.5);
+            margin: 20px 0;
+            text-decoration: none;
+            display: flex;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px -8px rgba(139, 92, 246, 0.7);
+            background: linear-gradient(135deg, #9b6ef6, #8b4ef6);
+        }
+
+        .download-btn:active {
+            transform: translateY(2px);
+        }
+
+        /* Информация о файле */
+        .file-info {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .file-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Системные требования */
+        .requirements {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .requirements h3 {
+            color: #c084fc;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .requirements ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            list-style: none;
+        }
+
+        .requirements li {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #475569;
+            font-size: 0.75rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px 20px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .download-btn {
+                font-size: 1.3rem;
+                padding: 15px;
+            }
+            .feature {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Генерация частиц -->
+<script>
+    function createParticle() {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        const size = Math.random() * 6 + 2;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = Math.random() * 8 + 4 + 's';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        particle.style.opacity = Math.random() * 0.5;
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 10000);
+    }
+    setInterval(createParticle, 300);
+</script>
+
+<div class="container">
+    <div class="game-icon">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="30" width="60" height="45" rx="10" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
+            <circle cx="40" cy="50" r="5" fill="#c084fc"/>
+            <circle cx="60" cy="50" r="5" fill="#c084fc"/>
+            <rect x="45" y="58" width="10" height="6" rx="3" fill="#60a5fa"/>
+            <path d="M30 30 L35 20 L65 20 L70 30" fill="#8b5cf6" stroke="#7c3aed" stroke-width="1.5"/>
+            <text x="50" y="82" text-anchor="middle" fill="#f472b6" font-size="10" font-weight="bold">OMT</text>
+        </svg>
+    </div>
+
+    <h1>ONE MORE TURN</h1>
+    <div style="text-align: center;">
+        <div class="subtitle">✦ Пошаговая RPG стратегия ✦</div>
+    </div>
+
+    <div class="description">
+        <p>🔥 <strong>One More Turn</strong> — это захватывающая пошаговая RPG, где каждое решение имеет значение. Сражайтесь, прокачивайте героя, открывайте новые способности и проходите всё новые испытания. <strong>"Ещё один ход"</strong> — это не просто название, это образ жизни!</p>
+        <div class="features">
+            <div class="feature">🎮 Пошаговые сражения</div>
+            <div class="feature">⚔️ 10+ уникальных врагов</div>
+            <div class="feature">✨ Система прокачки</div>
+            <div class="feature">🏆 Финальный босс</div>
+            <div class="feature">🎵 Эпический саундтрек</div>
+            <div class="feature">💾 Автосохранение</div>
+        </div>
+    </div>
+
+    <!-- КНОПКА СКАЧИВАНИЯ — ВЕДЁТ НА omt.exe -->
+    <a href="omt.exe" download="omt.exe" class="download-btn">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        СКАЧАТЬ ONE MORE TURN
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+        </svg>
+    </a>
+
+    <div class="file-info">
+        <span>📦 Файл: omt.exe</span>
+        <span>💾 Размер: 16.6 MB</span>
+        <span>🪟 Платформа: Windows 10/11</span>
+        <span>🔄 Версия: 0.1</span>
+    </div>
+
+    <div class="requirements">
+        <h3>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            СИСТЕМНЫЕ ТРЕБОВАНИЯ
+        </h3>
+        <ul>
+            <li>💻 ОС: Windows 10 / 11</li>
+            <li>⚡ Процессор: 2.0 GHz</li>
+            <li>🎮 ОЗУ: 2 GB</li>
+            <li>💿 Место: 100 MB</li>
+            <li>🖥️ DirectX 10</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        © 2026 One More Turn | Сделано с ❤️ для фанатов пошаговых RPG<br>
+        * После скачивания запустите omt.exe. Если антивирус ругается — добавьте в исключения, мы чистые!
+    </div>
+</div>
+
+</body>
+                                                                                                           </html>
