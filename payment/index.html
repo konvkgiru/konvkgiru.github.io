@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Оплата через Crypto Bot</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка с балансом -->
+        <div class="header">
+            <div class="balance-card">
+                <div class="balance-label">💎 Ваш баланс</div>
+                <div class="balance-amount" id="userBalance">0.00</div>
+                <div class="balance-currency">USDT (тестовая сеть)</div>
+            </div>
+        </div>
+
+        <!-- Информация о платеже -->
+        <div class="payment-info" id="paymentInfo">
+            <div class="info-icon">🧾</div>
+            <div class="info-title">Счёт на оплату</div>
+            <div class="info-details" id="invoiceDetails">
+                <div class="detail-row">
+                    <span class="detail-label">Сумма:</span>
+                    <span class="detail-value" id="amountRub">0 ₽</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">В USDT:</span>
+                    <span class="detail-value" id="amountUsdt">0.00 USDT</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Курс:</span>
+                    <span class="detail-value">1 USDT = 77.43 ₽</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">ID счёта:</span>
+                    <span class="detail-value" id="invoiceId">—</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Выбор валюты оплаты -->
+        <div class="currency-selector">
+            <div class="selector-title">Выберите валюту для оплаты</div>
+            <div class="currency-buttons" id="currencyButtons">
+                <button class="currency-btn active" data-currency="USDT">
+                    <span class="currency-icon">💵</span>
+                    <span class="currency-name">USDT</span>
+                    <span class="currency-network">(TRC20)</span>
+                </button>
+                <button class="currency-btn" data-currency="TON">
+                    <span class="currency-icon">🪙</span>
+                    <span class="currency-name">TON</span>
+                    <span class="currency-network">(Telegram)</span>
+                </button>
+                <button class="currency-btn" data-currency="BTC">
+                    <span class="currency-icon">₿</span>
+                    <span class="currency-name">BTC</span>
+                    <span class="currency-network">(Lightning)</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Кнопка оплаты -->
+        <button class="pay-btn" id="payBtn">
+            <span class="btn-text">💳 Оплатить</span>
+            <span class="btn-loader" style="display: none;">⏳</span>
+        </button>
+
+        <!-- Статус платежа -->
+        <div class="status-card" id="statusCard" style="display: none;">
+            <div class="status-icon" id="statusIcon">⏳</div>
+            <div class="status-title" id="statusTitle">Ожидание оплаты</div>
+            <div class="status-message" id="statusMessage">
+                Оплатите счёт через @CryptoTestnetBot
+            </div>
+            <button class="check-btn" id="checkBtn">🔄 Проверить оплату</button>
+        </div>
+
+        <!-- Инструкция -->
+        <div class="instructions">
+            <div class="instruction-title">📖 Как оплатить</div>
+            <div class="instruction-steps">
+                <div class="step">1️⃣ Нажмите «Оплатить»</div>
+                <div class="step">2️⃣ Подтвердите в @CryptoTestnetBot</div>
+                <div class="step">3️⃣ Нажмите «Проверить оплату»</div>
+            </div>
+            <div class="instruction-note">
+                💡 Нет тестовых USDT? Получите бесплатно в @CryptoTestnetBot (команда /faucet)
+            </div>
+        </div>
+    </div>
+
+    <!-- Уведомления -->
+    <div id="toast" class="toast"></div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
